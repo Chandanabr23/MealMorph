@@ -1,22 +1,46 @@
-<<<<<<< HEAD
 # MealMorph
-App that Reduces food waste by turning your fridge contents into cookable recipes 
-=======
-# mealmorph
 
-A new Flutter project.
+Flutter app that helps reduce food waste by turning what you have in the fridge into cookable recipes—with an editorial onboarding flow and strings driven by a single JSON file.
 
-## Getting Started
+## Requirements
 
-This project is a starting point for a Flutter application.
+- [Flutter](https://docs.flutter.dev/get-started/install) (see `pubspec.yaml` for SDK constraint)
 
-A few resources to get you started if this is your first Flutter project:
+## Run the app
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+flutter pub get
+flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> 7b81f8d (initail commit)
+Pick a device or emulator when prompted, or use `-d chrome` for web.
+
+## Project structure
+
+The codebase follows a **feature-first** layout with shared **core** and an **app** entry:
+
+| Path | Role |
+|------|------|
+| `lib/main.dart` | Async bootstrap: loads strings, then `runApp` |
+| `lib/app/mealmorph_app.dart` | `MaterialApp`, theme, `AppStringsScope` |
+| `lib/core/theme/` | Colors and `ThemeData` |
+| `lib/core/strings/` | `text.json` loader + `InheritedWidget` scope |
+| `lib/features/<feature>/presentation/` | Screens and UI for that feature |
+
+## Editing copy (no code changes)
+
+All user-visible strings for the current onboarding screen (plus app title and hero image URL) live in:
+
+**`assets/strings/text.json`**
+
+After you change this file, do a **full restart** (not only hot reload), because strings are read once at startup in `main()`.
+
+## Tests
+
+```bash
+flutter test
+```
+
+## License
+
+Private project (`publish_to: 'none'` in `pubspec.yaml`).
