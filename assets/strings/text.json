@@ -1,0 +1,20 @@
+{
+  "app": {
+    "title": "MealMorph"
+  },
+  "onboarding": {
+    "expiryPriority": {
+      "heroImageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuC_V2hiWPcQ0r7WISwRZtIICCmwLkf0-oLytgoLRRiTSsoCVqp5_npZFiBW7BUGeuthSUD-guQaUShwl2wuV7LbWtnfpwkM60s0mc0dfq6BQ7h1-CapTLHsCBpZz1UFZc_h17gCzraIYM51eO-vOZiEnEPyQaFGwG2xHLBv3axXUj9P-_-BeRQ6VaEiE-zNvEm5TAE5ixh0LVGfr3xTALQ6xWzsfV7eIB2hDAc1xch3Q5U5LlHzqOe9WDMhMoP-W8MabNBcdFfO2O8",
+      "brand": "MealMorph",
+      "kicker": "EXPIRY PRIORITY",
+      "headline": "Prioritize What Matters.",
+      "body": "We intelligently surface recipes using ingredients closest to their expiry date, saving you money and reducing waste.",
+      "next": "Next",
+      "skip": "Skip",
+      "chipExpiringSoon": "Expiring Soon: Spinach",
+      "chipUseWithin": "Use within 2 days: Salmon",
+      "smartScanTitle": "SMART SCAN",
+      "smartScanSubtitle": "Tracking 12 items in pantry"
+    }
+  }
+}
