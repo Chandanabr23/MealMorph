@@ -15,6 +15,20 @@
       "chipUseWithin": "Use within 2 days: Salmon",
       "smartScanTitle": "SMART SCAN",
       "smartScanSubtitle": "Tracking 12 items in pantry"
+    },
+    "snapFridge": {
+      "heroImageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCeZZOqg5qBJ8SPIvL11XBeV5Akzpt02U76ctS3ajGckiR7R5II0L_0fDbwOjaD4rW8cMq2HGclVyly-cjQVBJ1LvxH_4Ve_WNrpyDCWRDFv8I2feFbS3EtiXAi7tvIRyF87Bsgd81zraleL_h9Omc0bCkBvkQRURqjAqFOL_Mn5pXTtLU6Tmts7U5-J8VefreVgZiJhRpcnwo_Yx_JbvFFBt_meatBD0mXkeRAar9nLRxgXRkggOTRl8fKUJxDMcblH4YZGudR7yU",
+      "brand": "MealMorph",
+      "kicker": "Snap Your Fridge",
+      "headlineLine1": "Stop Wasting,",
+      "headlineAccent": "Start Morphing.",
+      "body": "Snap a photo of your fridge, and let AI identify your ingredients instantly to create gourmet recipes.",
+      "getStarted": "Get Started",
+      "signIn": "Sign In",
+      "floatAiTitle": "AI Scanning...",
+      "floatAiSubtitle": "Detected: Spinach, Eggplant",
+      "floatEcoTitle": "Zero Waste",
+      "floatEcoSubtitle": "Saved 2.4kg of food this month"
     }
   }
 }

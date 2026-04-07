@@ -21,6 +21,20 @@ void main() {
         'smartScanTitle': 'SMART SCAN',
         'smartScanSubtitle': 'Tracking 12 items in pantry',
       },
+      'snapFridge': {
+        'heroImageUrl': '',
+        'brand': 'MealMorph',
+        'kicker': 'Snap Your Fridge',
+        'headlineLine1': 'Stop Wasting,',
+        'headlineAccent': 'Start Morphing.',
+        'body': 'Snap a photo.',
+        'getStarted': 'Get Started',
+        'signIn': 'Sign In',
+        'floatAiTitle': 'AI Scanning...',
+        'floatAiSubtitle': 'Detected: Spinach',
+        'floatEcoTitle': 'Zero Waste',
+        'floatEcoSubtitle': 'Saved 2.4kg',
+      },
     },
   });
 

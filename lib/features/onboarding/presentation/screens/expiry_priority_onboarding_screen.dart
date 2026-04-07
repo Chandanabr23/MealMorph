@@ -6,8 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/strings/app_strings.dart';
 import '../../../../core/strings/app_strings_scope.dart';
 import '../../../../core/theme/app_colors.dart';
+import 'snap_fridge_onboarding_screen.dart';
 
-/// Onboarding — “Expiry Priority” (Stitch). Full page scroll; copy from [text.json].
+/// First onboarding step: expiry-first recipes. Scrollable; strings from [text.json].
 class ExpiryPriorityOnboardingScreen extends StatelessWidget {
   const ExpiryPriorityOnboardingScreen({super.key, this.onNext, this.onSkip});
 
@@ -17,6 +18,18 @@ class ExpiryPriorityOnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = AppStringsScope.of(context).expiryPriorityOnboarding;
+    void goNext() {
+      if (onNext != null) {
+        onNext!();
+        return;
+      }
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) => const SnapFridgeOnboardingScreen(),
+        ),
+      );
+    }
+
     final size = MediaQuery.sizeOf(context);
     final wide = size.width >= 768;
     final heroH = wide ? (size.height * 0.52).clamp(340.0, 580.0) : 486.0;
@@ -106,7 +119,7 @@ class ExpiryPriorityOnboardingScreen extends StatelessWidget {
                                     ),
                                     child: _CopyAndActions(
                                       strings: s,
-                                      onNext: onNext,
+                                      onNext: goNext,
                                       onSkip: onSkip,
                                       wide: true,
                                     ),
@@ -147,7 +160,7 @@ class ExpiryPriorityOnboardingScreen extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(32, 24, 32, 24),
                           child: _CopyAndActions(
                             strings: s,
-                            onNext: onNext,
+                            onNext: goNext,
                             onSkip: onSkip,
                             wide: false,
                           ),
