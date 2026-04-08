@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "85195271653",
+    "project_id": "mealmorph-b281f",
+    "storage_bucket": "mealmorph-b281f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85195271653:android:041f31f07302449f4a130c",
+        "android_client_info": {
+          "package_name": "com.example.mealmorph"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT_azDbqzg8uF3IWzS4NX4W03OzWduzpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

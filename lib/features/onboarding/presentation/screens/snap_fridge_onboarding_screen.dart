@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/strings/app_strings.dart';
 import '../../../../core/strings/app_strings_scope.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../auth/presentation/screens/login_screen.dart';
 
 /// Second onboarding step: fridge photo and CTAs. Strings from [text.json].
 class SnapFridgeOnboardingScreen extends StatelessWidget {
@@ -22,6 +23,12 @@ class SnapFridgeOnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void goLogin() {
+      Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(builder: (_) => const LoginScreen()),
+      );
+    }
+
     final s = AppStringsScope.of(context).snapFridgeOnboarding;
     final size = MediaQuery.sizeOf(context);
     final wide = size.width >= 768;
@@ -138,8 +145,8 @@ class SnapFridgeOnboardingScreen extends StatelessWidget {
                                 getStartedLabel: s.getStarted,
                                 signInLabel: s.signIn,
                                 wide: wide,
-                                onGetStarted: onGetStarted ?? () {},
-                                onSignIn: onSignIn ?? () {},
+                                onGetStarted: onGetStarted ?? goLogin,
+                                onSignIn: onSignIn ?? goLogin,
                               ),
                             ],
                           ),
