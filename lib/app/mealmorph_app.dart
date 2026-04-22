@@ -5,8 +5,8 @@ import '../core/nav/mealmorph_messenger.dart';
 import '../core/strings/app_strings.dart';
 import '../core/strings/app_strings_scope.dart';
 import '../core/theme/app_theme.dart';
-import '../features/fridge/presentation/screens/my_fridge_screen.dart';
 import '../features/onboarding/presentation/screens/expiry_priority_onboarding_screen.dart';
+import '../features/shell/presentation/screens/main_shell.dart';
 
 class MealMorphApp extends StatelessWidget {
   const MealMorphApp({
@@ -57,7 +57,7 @@ class _AuthGate extends StatelessWidget {
           );
         }
         if (snapshot.data != null) {
-          return const MyFridgeScreen();
+          return const MainShell();
         }
         return const ExpiryPriorityOnboardingScreen();
       },
