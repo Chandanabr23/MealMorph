@@ -2,6 +2,14 @@
 
 Flutter app that helps reduce food waste by turning what you have in the fridge into cookable recipes—with an editorial onboarding flow and strings driven by a single JSON file.
 
+<img width="1343" height="678" alt="image" src="https://github.com/user-attachments/assets/f5dc9a85-d3f6-4c56-a441-66499baaef25" />
+
+
+
+
+
+
+
 ## Requirements
 
 - [Flutter](https://docs.flutter.dev/get-started/install) (see `pubspec.yaml` for SDK constraint)
