@@ -6,6 +6,7 @@ import '../../../../core/strings/app_strings_scope.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../fridge/data/fridge_repository.dart';
 import '../../../fridge/domain/fridge_item.dart';
+import '../../../scan/data/scan_controller.dart';
 import '../../../shell/presentation/widgets/blurred_app_bar.dart';
 import '../../../shell/presentation/widgets/main_bottom_nav.dart';
 import '../../data/recipes_repository.dart';
@@ -28,19 +29,23 @@ class RecipesScreen extends StatefulWidget {
 class _RecipesScreenState extends State<RecipesScreen> {
   late final RecipesRepository _repo;
   final FridgeRepository _fridge = FridgeRepository.instance;
+  final ScanController _scan = ScanController.instance;
 
   List<Recipe> _recipes = const [];
   Object? _error;
   bool _loading = false;
   String? _filter;
   String _mode = 'idle';
+  int _lastFridgeCount = 0;
 
   @override
   void initState() {
     super.initState();
     _repo = widget._repository ?? RecipesRepository();
+    _lastFridgeCount = _fridge.items.value.length;
     _fridge.items.addListener(_onFridgeChanged);
-    if (_fridge.items.value.isNotEmpty) {
+    _scan.state.addListener(_onScanChanged);
+    if (_fridge.items.value.isNotEmpty && !_scan.state.value.isBusy) {
       _generate();
     }
   }
@@ -48,17 +53,26 @@ class _RecipesScreenState extends State<RecipesScreen> {
   @override
   void dispose() {
     _fridge.items.removeListener(_onFridgeChanged);
+    _scan.state.removeListener(_onScanChanged);
     super.dispose();
   }
 
   void _onFridgeChanged() {
-    if (_fridge.items.value.isEmpty) {
+    final count = _fridge.items.value.length;
+    if (count == 0) {
       setState(() {
         _recipes = const [];
         _error = null;
         _mode = 'idle';
       });
+    } else if (count > _lastFridgeCount && !_loading) {
+      _generate();
     }
+    _lastFridgeCount = count;
+  }
+
+  void _onScanChanged() {
+    if (mounted) setState(() {});
   }
 
   Future<void> _generate() async {
@@ -90,8 +104,13 @@ class _RecipesScreenState extends State<RecipesScreen> {
   @override
   Widget build(BuildContext context) {
     final s = AppStringsScope.of(context).recipes;
+    final scanStrings = AppStringsScope.of(context).scan;
     final appTitle = AppStringsScope.of(context).app.title;
     final bottomInset = MediaQuery.paddingOf(context).bottom + 140;
+    final scanState = _scan.state.value;
+    final scanning = scanState.isBusy;
+    final scanFailed =
+        scanState.status == ScanStatus.failure && _fridge.items.value.isEmpty;
 
     return Stack(
       children: [
@@ -134,8 +153,22 @@ class _RecipesScreenState extends State<RecipesScreen> {
                           setState(() => _filter = _filter == name ? null : name),
                     ),
                     const SizedBox(height: 24),
-                    if (_loading && _recipes.isEmpty)
-                      _LoadingBlock(strings: s)
+                    if (scanning)
+                      _LoadingBlock(
+                        title: scanStrings.analysing,
+                        subtitle: s.loadingSubtitle,
+                      )
+                    else if (scanFailed)
+                      _ErrorBlock(
+                        strings: s,
+                        error: scanState.error ?? scanStrings.cameraUnavailable,
+                        onRetry: () => _select(MainTab.scan),
+                      )
+                    else if (_loading && _recipes.isEmpty)
+                      _LoadingBlock(
+                        title: s.loadingTitle,
+                        subtitle: s.loadingSubtitle,
+                      )
                     else if (_error != null && _recipes.isEmpty)
                       _ErrorBlock(
                         strings: s,
@@ -577,9 +610,10 @@ class _StartCookingButton extends StatelessWidget {
 }
 
 class _LoadingBlock extends StatelessWidget {
-  const _LoadingBlock({required this.strings});
+  const _LoadingBlock({required this.title, required this.subtitle});
 
-  final RecipesScreenStrings strings;
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -597,7 +631,7 @@ class _LoadingBlock extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            strings.loadingTitle,
+            title,
             style: GoogleFonts.plusJakartaSans(
               fontSize: 18,
               fontWeight: FontWeight.w700,
@@ -606,7 +640,7 @@ class _LoadingBlock extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            strings.loadingSubtitle,
+            subtitle,
             textAlign: TextAlign.center,
             style: GoogleFonts.beVietnamPro(
               fontSize: 13,

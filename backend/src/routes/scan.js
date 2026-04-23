@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { aiEnabled, callVisionJson } from '../services/openai.js';
+import { aiEnabled, callVisionJson } from '../services/ai.js';
 import { mockScan } from '../services/mock_data.js';
 
 const upload = multer({

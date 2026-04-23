@@ -26,7 +26,8 @@ app.use((err, _req, res, _next) => {
 });
 
 const port = Number(process.env.PORT) || 8787;
-app.listen(port, () => {
+const host = process.env.HOST || '0.0.0.0';
+app.listen(port, host, () => {
   // eslint-disable-next-line no-console
-  console.log(`mealmorph-backend listening on :${port}`);
+  console.log(`mealmorph-backend listening on ${host}:${port}`);
 });

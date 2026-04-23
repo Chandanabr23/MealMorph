@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { aiEnabled, callTextJson } from '../services/openai.js';
+import { aiEnabled, callTextJson } from '../services/ai.js';
 import { mockRecipes } from '../services/mock_data.js';
 
 const router = Router();
