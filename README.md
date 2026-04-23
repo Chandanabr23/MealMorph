@@ -1,6 +1,14 @@
 # MealMorph
 
-Flutter app that helps reduce food waste by turning what you have in the fridge into cookable recipes—with an editorial onboarding flow and strings driven by a single JSON file.
+MealMorph is a Flutter app that transforms ingredients from your fridge, captured through photos or extracted from grocery receipts, into expiry-aware recipes so food is used before it goes to waste. It uses a Node.js backend with OpenAI GPT-4o-mini to identify ingredients and generate recipes that prioritise items closest to spoiling, while Firebase Authentication enables secure sign-in and a shared digital pantry across Home, Recipes, Scan, and Profile. The experience is shaped by a Digital Greenhouse design system featuring refined typography, organic forms, and layered glass-like surfaces, giving the app the feel of a premium culinary magazine rather than a typical utility.
+
+<img width="1343" height="678" alt="image" src="https://github.com/user-attachments/assets/f5dc9a85-d3f6-4c56-a441-66499baaef25" />
+
+
+
+
+
+
 
 ## Requirements
 
